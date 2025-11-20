@@ -1,0 +1,20 @@
+{
+  "name": "splita-server",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Backend server for Splita form submissions",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "openai": "^6.9.1",
+    "resend": "^6.5.2",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
+  }
+}
