@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useMemo } from "react";
 
 interface SplitParticle {
   id: number;
@@ -36,10 +36,10 @@ export const SplitaBackground = ({
   containerClassName,
   ...props
 }: {
-  children?: any;
+  children?: React.ReactNode;
   className?: string;
   containerClassName?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationIdRef = useRef<number | null>(null);
@@ -51,7 +51,7 @@ export const SplitaBackground = ({
   const scrollYRef = useRef(0);
   const lastMoneySpawnRef = useRef(0);
 
-  const colors = ["#02B7A0", "#02D4B8", "#00A693", "#01C9B7"];
+  const colors = useMemo(() => ["#02B7A0", "#02D4B8", "#00A693", "#01C9B7"], []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -421,7 +421,7 @@ export const SplitaBackground = ({
         cancelAnimationFrame(animationIdRef.current);
       }
     };
-  }, []);
+  }, [colors]);
 
   return (
     <div

@@ -1,9 +1,8 @@
-// Simple admin panel to access local database
+// Simple admin panel - links to Resend dashboard
 // Access by adding ?admin=true to the URL
 import { useState, useEffect } from 'react';
-import { ViewSubmissions } from './ViewSubmissions';
 import { Button } from '@/components/ui/button';
-import { X } from 'lucide-react';
+import { X, ExternalLink } from 'lucide-react';
 
 export function AdminPanel() {
   const [isOpen, setIsOpen] = useState(false);
@@ -50,7 +49,7 @@ export function AdminPanel() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
           <div className="glass-panel w-full max-w-4xl max-h-[90vh] overflow-y-auto p-6 relative">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-2xl font-bold">Local Database Admin</h2>
+              <h2 className="text-2xl font-bold">Admin Panel</h2>
               <Button
                 onClick={() => setIsOpen(false)}
                 variant="ghost"
@@ -59,7 +58,28 @@ export function AdminPanel() {
                 <X className="w-4 h-4" />
               </Button>
             </div>
-            <ViewSubmissions />
+            <div className="space-y-4">
+              <div className="glass-panel p-6">
+                <h3 className="text-lg font-semibold mb-2">View Submissions</h3>
+                <p className="text-sm text-[rgb(var(--muted-foreground))] mb-4">
+                  All contacts are managed in the Resend dashboard.
+                </p>
+                <Button
+                  asChild
+                  className="btn-gradient"
+                >
+                  <a
+                    href="https://resend.com/audiences"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2"
+                  >
+                    Open Resend Dashboard
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       )}

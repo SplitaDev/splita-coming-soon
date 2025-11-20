@@ -57,25 +57,29 @@ Currently, email submission is simulated. To connect to your backend:
 
 ## Deployment
 
-### Vercel
+### Quick Deploy (Recommended)
 
-1. Push to GitHub
-2. Import project in Vercel
-3. Set environment variables
-4. Deploy
+**Render.com** - Free forever, deploys both frontend and backend:
 
-### Netlify
+1. Push your code to GitHub
+2. Go to https://render.com and sign up
+3. Connect your GitHub repository
+4. Deploy backend as "Web Service" (root: `server`)
+5. Deploy frontend as "Static Site" (build: `npm run build`, publish: `dist`)
+6. Add environment variables in Render dashboard
+7. Done! Your app is live
 
-1. Push to GitHub
-2. Import project in Netlify
-3. Set environment variables
-4. Deploy
+See `DEPLOY.md` for detailed step-by-step instructions.
 
-### Custom Domain
+### Manual Deployment
 
-1. Build: `npm run build`
-2. Upload `dist/` folder to your hosting
-3. Point your custom domain to the deployment
+1. Build for production:
+```bash
+npm run build
+```
+
+2. Deploy the `dist/` folder to your preferred hosting provider
+3. Deploy the `server/` folder separately for the backend API
 4. Set environment variables in your hosting provider
 
 ## Project Structure

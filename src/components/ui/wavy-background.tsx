@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { createNoise3D } from "simplex-noise";
 
 export const WavyBackground = ({
@@ -14,7 +14,7 @@ export const WavyBackground = ({
   waveOpacity = 0.5,
   ...props
 }: {
-  children?: any;
+  children?: React.ReactNode;
   className?: string;
   containerClassName?: string;
   colors?: string[];
@@ -23,7 +23,7 @@ export const WavyBackground = ({
   blur?: number;
   speed?: "slow" | "fast";
   waveOpacity?: number;
-  [key: string]: any;
+  [key: string]: unknown;
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationIdRef = useRef<number | null>(null);
@@ -33,7 +33,7 @@ export const WavyBackground = ({
   const mouseYRef = useRef(0);
   const isHoveringRef = useRef(false);
   
-  const getSpeed = () => {
+  const getSpeed = useCallback(() => {
     switch (speed) {
       case "slow":
         return 0.001;
@@ -42,7 +42,7 @@ export const WavyBackground = ({
       default:
         return 0.001;
     }
-  };
+  }, [speed]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -190,7 +190,7 @@ export const WavyBackground = ({
         cancelAnimationFrame(animationIdRef.current);
       }
     };
-  }, [blur, speed, waveOpacity, colors, waveWidth, backgroundFill]);
+  }, [blur, speed, waveOpacity, colors, waveWidth, backgroundFill, getSpeed]);
 
   const [isSafari, setIsSafari] = useState(false);
   useEffect(() => {
