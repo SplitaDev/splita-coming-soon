@@ -397,7 +397,7 @@ function WaitlistForm({ onSuccess }: { onSuccess: () => void }) {
     setIsSubmitting(true);
     
     // Submit to database
-    const success = await submitWaitlist(email, userType);
+    const success = await submitWaitlist(email, userType, undefined);
     
     if (success) {
       setSubmittedEmail(email);
